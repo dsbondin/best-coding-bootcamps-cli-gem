@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "best-coding-bootcamps-cli-gem/version"
+require "best-coding-bootcamps/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "best-coding-bootcamps-cli-gem"
-  spec.version       = Bestcodingbootcampscligem::VERSION
+  spec.name          = "best-coding-bootcamps"
+  spec.version       = Bestcodingbootcamps::VERSION
   spec.authors       = ["'Denis Bondin'"]
   spec.email         = ["'dsbondin@gmail.com'"]
 
