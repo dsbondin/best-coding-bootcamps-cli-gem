@@ -1,1 +1,5 @@
 #!/usr/bin/env ruby
+
+require_relative "../lib/best-coding-bootcamps"
+
+BestCodingBootcamps::CLI.new.call

@@ -1,6 +1,6 @@
 require "best-coding-bootcamps
 /version"
 
-module Bestcodingbootcamps
+module BestCodingBootcamps
   # Your code goes here...
 end
