@@ -1,6 +1,2 @@
-require "best-coding-bootcamps
-/version"
-
-module BestCodingBootcamps
-  # Your code goes here...
-end
+require_relative "./best-coding-bootcamps/version"
+require_relative "./best-coding-bootcamps/cli"
