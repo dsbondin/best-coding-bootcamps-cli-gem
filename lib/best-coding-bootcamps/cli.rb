@@ -1,6 +1,7 @@
 class BestCodingBootcamps::CLI
 
   def call
+    BestCodingBootcamps::Bootcamp.create_bootcamps
     puts "Best Coding Bootcamps in NYC"
     list_bootcamps
     menu
@@ -8,8 +9,9 @@ class BestCodingBootcamps::CLI
   end
 
   def list_bootcamps
-    puts "1. App Academy"
-    puts "2. Flatiron School"
+    BestCodingBootcamps::Bootcamp.all.each_with_index do |b, i|
+      puts "#{i+1}. #{b.cost}"
+    end
   end
 
   def menu

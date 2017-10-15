@@ -1,6 +1,5 @@
 require_relative "../best-coding-bootcamps"
 
-
 class BestCodingBootcamps::Bootcamp
 
   attr_accessor :name, :url, :ranking, :about, :courses, :cost, :hiring_rate
@@ -32,15 +31,17 @@ class BestCodingBootcamps::Bootcamp
     Nokogiri::HTML(open(self.url)).search("blockquote#topic-description p").text
   end
 
+  def courses
+    Nokogiri::HTML(open(self.url)).search("a.course-listing").collect do |c|
+      c.text
+    end
+  end
 
+  def cost
+    Nokogiri::HTML(open(self.url)).xpath("//*[@id='bootcamp-summary']/table/tbody/tr[8]/td").text
+  end
 
 end
 
-
-# main = Nokogiri::HTML(open("https://www.switchup.org/locations/nyc-coding-bootcamp"))
-# bootcamps = main.search("div h3 a")
-# bootcamps = bootcamps[0..19]
-# bootcamps.each_with_index { |b, i| puts "#{i+1}. https://www.switchup.org#{b.attribute("href")}"}
-
 BestCodingBootcamps::Bootcamp.create_bootcamps
-  puts BestCodingBootcamps::Bootcamp.all[1].about
+puts BestCodingBootcamps::Bootcamp.all[2].cost
