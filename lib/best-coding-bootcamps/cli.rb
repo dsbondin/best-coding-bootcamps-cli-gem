@@ -14,10 +14,13 @@ class BestCodingBootcamps::CLI
 
   def menu
     puts "Please enter the bootcamp number to get more information"
+    puts "Type 'list' to see the bootcamps again or 'exit'"
     input = nil
     while input != "exit" do
       input = gets.strip
       case input
+      when "list"
+        list_bootcamps
       when "1"
         puts "more info on 1"
       when "2"
