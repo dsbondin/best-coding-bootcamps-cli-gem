@@ -2,12 +2,10 @@ require_relative "../best-coding-bootcamps"
 
 class BestCodingBootcamps::Bootcamp
 
-  attr_accessor :name, :url, :ranking, :about, :courses, :cost, :hiring_rate
+  attr_accessor :name, :url, :ranking, :about, :courses
   @@all = []
 
-  def initialize(name, url)
-    @name = name
-    @url = url
+  def initialize
     @@all << self
   end
 
@@ -17,9 +15,10 @@ class BestCodingBootcamps::Bootcamp
 
   def self.create_bootcamps
     main = Nokogiri::HTML(open("https://www.switchup.org/locations/nyc-coding-bootcamp"))
-    bootcamps = main.search("div h3 a")[0..19]
-    bootcamps.each do |b|
-      self.new(b.text.split(". ")[1], "https://www.switchup.org#{b.attribute("href")}")
+    main.search("div h3 a")[0..19].each do |b|
+      bootcamp = self.new
+      bootcamp.name = b.text.split(". ")[1]
+      bootcamp.url = "https://www.switchup.org#{b.attribute("href")}"
     end
   end
 
@@ -37,11 +36,9 @@ class BestCodingBootcamps::Bootcamp
     end
   end
 
-  def cost
-    Nokogiri::HTML(open(self.url)).xpath("//*[@id='bootcamp-summary']/table/tbody/tr[8]/td").text
+  def self.find_bootcamp(input)
+    self.all[input-1]
   end
 
-end
 
-BestCodingBootcamps::Bootcamp.create_bootcamps
-puts BestCodingBootcamps::Bootcamp.all[2].cost
+end
