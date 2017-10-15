@@ -1,0 +1,19 @@
+MENU
+
+Best Coding Bootcamps in NYC
+
+1...
+2...
+3...
+
+Please enter the bootcamp number to get more information.
+Type 'list' to see the bootcamps again or 'exit'.
+
+-----------
+Bootcamp attributes:
+name
+about
+url
+courses
+cost ranking
+hiring %
