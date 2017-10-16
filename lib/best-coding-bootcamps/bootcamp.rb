@@ -5,7 +5,7 @@ class BestCodingBootcamps::Bootcamp
   attr_accessor :name, :url, :ranking, :about, :courses
   @@all = []
 
-  def initialize
+  def initialize(name = nil, url = nil)
     @@all << self
   end
 
@@ -15,7 +15,7 @@ class BestCodingBootcamps::Bootcamp
 
   def self.create_bootcamps
     main = Nokogiri::HTML(open("https://www.switchup.org/locations/nyc-coding-bootcamp"))
-    main.search("div h3 a")[0..19].each do |b|
+    main.search("div h3 a")[0..9].each do |b|
       bootcamp = self.new
       bootcamp.name = b.text.split(". ")[1]
       bootcamp.url = "https://www.switchup.org#{b.attribute("href")}"
@@ -31,9 +31,10 @@ class BestCodingBootcamps::Bootcamp
   end
 
   def courses
-    Nokogiri::HTML(open(self.url)).search("a.course-listing").collect do |c|
-      c.text
+    list = Nokogiri::HTML(open(self.url)).search("a.course-listing").collect do |c|
+      c.text.strip
     end
+    list.uniq
   end
 
   def self.find_bootcamp(input)

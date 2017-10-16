@@ -2,30 +2,34 @@ class BestCodingBootcamps::CLI
 
   def call
     BestCodingBootcamps::Bootcamp.create_bootcamps
-    puts "20 Best Coding Bootcamps in NYC"
     list_bootcamps
     menu
     exit
   end
 
   def list_bootcamps
+    puts ""
+    puts "10 BEST CODING BOOTCAMPS NYC"
+    puts ""
     BestCodingBootcamps::Bootcamp.all.each_with_index do |b, i|
       puts "#{i+1}. #{b.name}"
     end
+    puts ""
+    puts "Please enter the bootcamp number to get more information"
+    puts "Type 'list' to see the bootcamps again or 'exit' to close the app"
   end
 
   def menu
-    puts "Please enter the bootcamp number to get more information"
-    puts "Type 'list' to see the bootcamps again or 'exit'"
+
     input = nil
     while input != "exit" do
-      input = gets.strip
+      input = gets.strip.downcase
       if input ==  "list"
         list_bootcamps
-      elsif input.to_i > 0 && input.to_i <=20
+      elsif input.to_i > 0 && input.to_i <=10
         print_bootcamp(input.to_i)
         puts ""
-        puts "Choose another bootcamp or type 'exit'"
+        puts "Choose another bootcamp or type 'list' or 'exit'"
       else
         puts "Please enter a valid input"
       end
