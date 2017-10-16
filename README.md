@@ -1,28 +1,14 @@
 # Bestcodingbootcamps
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/best-coding-bootcamps`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This CLI ruby gem lists 10 best coding bootcamps in NYC and provides more information to the user.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'best-coding-bootcamps'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install best-coding-bootcamps
+$ gem install best-coding-bootcamps
 
 ## Usage
 
-TODO: Write usage instructions here
+Type $ best-coding-bootcamps and follow the on screen prompts.
 
 ## Development
 
@@ -33,3 +19,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/'dsbondin'/best-coding-bootcamps-cli-gem.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
