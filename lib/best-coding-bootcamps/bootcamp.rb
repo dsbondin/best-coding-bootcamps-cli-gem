@@ -1,8 +1,6 @@
-require_relative "../best-coding-bootcamps"
-
 class BestCodingBootcamps::Bootcamp
 
-  attr_accessor :name, :url, :ranking, :about, :courses
+  attr_accessor :name, :url
   @@all = []
 
   def initialize(name = nil, url = nil)
@@ -40,6 +38,5 @@ class BestCodingBootcamps::Bootcamp
   def self.find_bootcamp(input)
     self.all[input-1]
   end
-
 
 end
