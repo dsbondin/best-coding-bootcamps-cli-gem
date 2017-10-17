@@ -20,16 +20,20 @@ class BestCodingBootcamps::Bootcamp
     end
   end
 
+  def doc
+    Nokogiri::HTML(open(self.url))
+  end
+
   def ranking
-    Nokogiri::HTML(open(self.url)).search("div.bootcamp-caption p span span").text
+    doc.search("div.bootcamp-caption p span span").text
   end
 
   def about
-    Nokogiri::HTML(open(self.url)).search("blockquote#topic-description p").text
+    doc.search("blockquote#topic-description p").text
   end
 
   def courses
-    list = Nokogiri::HTML(open(self.url)).search("a.course-listing").collect do |c|
+    list = doc.search("a.course-listing").collect do |c|
       c.text.strip
     end
     list.uniq
