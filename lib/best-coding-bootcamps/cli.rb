@@ -23,20 +23,21 @@ class BestCodingBootcamps::CLI
   end
 
   def menu
-    input = nil
-    while input != "exit" do
-      input = gets.strip.downcase
-      if input ==  "list"
-        list_bootcamps
-      elsif input == "exit"
-        exit
-      elsif input.to_i > 0 && input.to_i <=10
-        print_bootcamp(input.to_i)
-        puts ""
-        puts "Choose another bootcamp (1-10), type 'list' to see all bootcamps or 'exit' to close the app"
-      else
-        puts "Please enter a valid input"
-      end
+    puts ""
+    input = gets.strip.downcase
+    if input ==  "list"
+      list_bootcamps
+      menu
+    elsif input == "exit"
+      exit
+    elsif input.to_i > 0 && input.to_i <=10
+      print_bootcamp(input.to_i)
+      puts ""
+      puts "Choose another bootcamp (1-10), type 'list' to see all bootcamps or 'exit' to close the app"
+      menu
+    else
+      puts "Please enter a valid input"
+      menu
     end
   end
 
@@ -53,6 +54,7 @@ class BestCodingBootcamps::CLI
   end
 
   def exit
+    puts ""
     puts "Thank you! See you again soon."
     puts "The bootcamp information was taken from www.switchup.org"
   end
