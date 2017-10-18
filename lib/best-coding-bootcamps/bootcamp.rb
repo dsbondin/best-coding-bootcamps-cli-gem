@@ -3,7 +3,7 @@ class BestCodingBootcamps::Bootcamp
   attr_accessor :name, :url
   @@all = []
 
-  def initialize(name = nil, url = nil)
+  def initialize
     @@all << self
   end
 
