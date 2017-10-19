@@ -32,6 +32,10 @@ class BestCodingBootcamps::Bootcamp
     doc.search("blockquote#topic-description p").text
   end
 
+  # def link
+  #   doc.search("")
+  # end
+
   def courses
     list = doc.search("a.course-listing").collect do |c|
       c.text.strip
