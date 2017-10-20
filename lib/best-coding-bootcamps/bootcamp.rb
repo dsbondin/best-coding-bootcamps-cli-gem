@@ -30,11 +30,13 @@ class BestCodingBootcamps::Bootcamp
 
   def about
     doc.search("blockquote#topic-description p").text
+    binding.pry
+
   end
 
-  # def link
-  #   doc.search("")
-  # end
+  def website_link
+    doc.search("table.topic-info a.website-link").attr("onclick").value.gsub("window.open('", "").split("');")[0]
+  end
 
   def courses
     list = doc.search("a.course-listing").collect do |c|
