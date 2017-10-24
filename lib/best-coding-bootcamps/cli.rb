@@ -1,7 +1,10 @@
 class BestCodingBootcamps::CLI
 
   def call
-    BestCodingBootcamps::Bootcamp.create_bootcamps
+    puts "How many total schools would you like to see?"
+    input = gets.strip.to_i
+    BestCodingBootcamps::Bootcamp.create_bootcamps(input)
+    binding.pry
     list_bootcamps
     menu
   end
@@ -30,10 +33,10 @@ class BestCodingBootcamps::CLI
       menu
     elsif input == "exit"
       exit
-    elsif input.to_i > 0 && input.to_i <=10
+    elsif input.to_i.between?(1, BestCodingBootcamps::Bootcamp.all.size)
       print_bootcamp(input.to_i)
       puts ""
-      puts "Choose another bootcamp (1-10), type 'list' to see all bootcamps or 'exit' to close the app"
+      puts "Choose another bootcamp, type 'list' to see all bootcamps or 'exit' to close the app"
       menu
     else
       puts "Please enter a valid input"
@@ -51,6 +54,27 @@ class BestCodingBootcamps::CLI
     puts ""
     puts "COURSES:"
     bootcamp.courses.each { |c| puts c}
+  end
+
+  def visit_website
+    puts ""
+    puts "Would you like to visit bootcamp's website? Y/N"
+    input = gets.strip
+
+    case input
+    when "y" || "Y"
+      puts "Opening webpage..."
+      #goto website
+    when "n" || "N"
+      puts ""
+    when "exit"
+      exit
+    when "list"
+      list_bootcamps
+      menu
+    else
+      visit_website
+    end
   end
 
   def exit
