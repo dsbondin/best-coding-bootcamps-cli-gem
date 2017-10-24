@@ -53,6 +53,27 @@ class BestCodingBootcamps::CLI
     bootcamp.courses.each { |c| puts c}
   end
 
+  def visit_website
+    puts ""
+    puts "Would you like to visit bootcamp's website? Y/N"
+    input = gets.strip
+
+    case input
+    when "y" || "Y"
+      puts "Opening webpage..."
+      #goto website
+    when "n" || "N"
+      puts ""
+    when "exit"
+      exit
+    when "list"
+      list_bootcamps
+      menu
+    else
+      visit_website
+    end
+  end
+
   def exit
     puts ""
     puts "Thank you! See you again soon."

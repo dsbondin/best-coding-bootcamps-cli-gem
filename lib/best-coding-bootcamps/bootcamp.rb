@@ -30,8 +30,6 @@ class BestCodingBootcamps::Bootcamp
 
   def about
     doc.search("blockquote#topic-description p").text
-    binding.pry
-
   end
 
   def website_link
