@@ -38,10 +38,9 @@ class BestCodingBootcamps::Bootcamp
   end
 
   def courses
-    list = doc.search("a.course-listing").collect do |c|
+    doc.search("a.course-listing").collect do |c|
       c.text.strip
-    end
-    list.uniq
+    end.uniq
   end
 
   def self.search_for_course(course)

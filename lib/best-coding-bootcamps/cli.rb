@@ -1,10 +1,9 @@
 class BestCodingBootcamps::CLI
 
   def call
-    puts "How many total schools would you like to see?"
+    puts "How many total schools would you like to see (max 20)?"
     input = gets.strip.to_i
     BestCodingBootcamps::Bootcamp.create_bootcamps(input)
-    binding.pry
     list_bootcamps
     menu
   end
