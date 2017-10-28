@@ -12,9 +12,17 @@ class BestCodingBootcamps::Bootcamp
     @@all
   end
 
-  def self.create_bootcamps(input)
-    main = Nokogiri::HTML(open("https://www.switchup.org/locations/nyc-coding-bootcamp"))
-    main.search("div h3 a")[0..input-1].each do |b|
+  def self.main_page
+    Nokogiri::HTML(open("https://www.switchup.org/locations/nyc-coding-bootcamp"))
+  end
+
+  def self.bootcamp_count
+    self.main_page.search("div.span9 h2.text-center.blog-post-subtitle").text.gsub("/[^0-9]/", "").to_i
+  end
+
+  def self.create_bootcamps
+    bootcamp_count =
+    self.main_page.search("div h3 a")[0..self.bootcamp_count-1].each do |b|
       bootcamp = self.new
       bootcamp.name = b.text.split(". ")[1]
       bootcamp.url = "https://www.switchup.org#{b.attribute("href")}"

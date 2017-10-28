@@ -1,16 +1,14 @@
 class BestCodingBootcamps::CLI
 
   def call
-    puts "How many total schools would you like to see (max 20)?"
-    input = gets.strip.to_i
-    BestCodingBootcamps::Bootcamp.create_bootcamps(input)
+    BestCodingBootcamps::Bootcamp.create_bootcamps
     list_bootcamps
     menu
   end
 
   def list_bootcamps
     puts ""
-    puts "10 BEST CODING BOOTCAMPS IN NYC"
+    puts "#{BestCodingBootcamps::Bootcamp.bootcamp_count} BEST CODING BOOTCAMPS IN NYC"
     puts ""
     BestCodingBootcamps::Bootcamp.all.each_with_index do |b, i|
       puts "#{i+1}. #{b.name}"
@@ -34,7 +32,7 @@ class BestCodingBootcamps::CLI
       exit
     elsif input.to_i.between?(1, BestCodingBootcamps::Bootcamp.all.size)
       print_bootcamp(input.to_i)
-      puts ""
+      puts "---------------------------------"
       puts "Choose another bootcamp, type 'list' to see all bootcamps or 'exit' to close the app"
       menu
     else
