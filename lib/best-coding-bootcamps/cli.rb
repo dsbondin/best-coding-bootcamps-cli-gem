@@ -32,7 +32,6 @@ class BestCodingBootcamps::CLI
       exit
     elsif input.to_i.between?(1, BestCodingBootcamps::Bootcamp.all.size)
       print_bootcamp(input.to_i)
-      puts "---------------------------------"
       puts "Choose another bootcamp, type 'list' to see all bootcamps or 'exit' to close the app"
       menu
     else
@@ -51,33 +50,29 @@ class BestCodingBootcamps::CLI
     puts ""
     puts "COURSES:"
     bootcamp.courses.each { |c| puts c}
-  end
-
-  def visit_website
+    puts "---------------***---------------"
     puts ""
     puts "Would you like to visit bootcamp's website? Y/N"
     input = gets.strip
-
-    case input
-    when "y" || "Y"
+    if input == "y" || input == "Y"
       puts "Opening webpage..."
-      #goto website
-    when "n" || "N"
-      puts ""
-    when "exit"
-      exit
-    when "list"
-      list_bootcamps
-      menu
-    else
-      visit_website
+      # Launchy.open('http://www.ruby-lang.org/')
     end
   end
+
+  # def visit_website
+  #   puts "Would you like to visit bootcamp's website? Y/N"
+  #   input = gets.strip
+  #   if input == "y" || input == "Y"
+  #     puts "Opening webpage..."
+  #     system("start #{bootcamp.website_link}")
+  #   end
+  # end
 
   def exit
     puts ""
     puts "Thank you! See you again soon."
-    puts "The bootcamp information was taken from www.switchup.org"
+    puts "The information on bootcamps was taken from www.switchup.org"
   end
 
 end

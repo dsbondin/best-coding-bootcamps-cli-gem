@@ -5,7 +5,7 @@ require "best-coding-bootcamps/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "best-coding-bootcamps"
-  spec.version       = Bestcodingbootcamps::VERSION
+  spec.version       = BestCodingBootcamps::VERSION
   spec.authors       = ["'Denis Bondin'"]
   spec.email         = ["'dsbondin@gmail.com'"]
 

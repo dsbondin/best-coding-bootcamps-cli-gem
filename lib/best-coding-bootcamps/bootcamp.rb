@@ -3,7 +3,6 @@ class BestCodingBootcamps::Bootcamp
   attr_accessor :name, :url
   @@all = []
 
-
   def initialize
     @@all << self
   end
@@ -17,7 +16,7 @@ class BestCodingBootcamps::Bootcamp
   end
 
   def self.bootcamp_count
-    self.main_page.search("div.span9 h2.text-center.blog-post-subtitle").text.gsub("/[^0-9]/", "").to_i
+    self.main_page.search("div.span9 h2.text-center.blog-post-subtitle").text.gsub(/[^0-9]/, "").to_i
   end
 
   def self.create_bootcamps
